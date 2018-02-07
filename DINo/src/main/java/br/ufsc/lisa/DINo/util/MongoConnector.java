@@ -22,7 +22,7 @@ public class MongoConnector implements Connector{
 		return true;
 	}
 	@Override
-	public boolean  connect(String uri, String port, String user, String password, String DB) {
+	public boolean connect(String uri, String port, String user, String password, String DB) {
 		if (user != null && !user.isEmpty()) {
 			try {
 				this.credential = MongoCredential.createCredential(user, DB, password.toCharArray());
