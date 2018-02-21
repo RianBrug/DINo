@@ -1,5 +1,7 @@
 package br.ufsc.lisa.DINo.util;
 
+import java.util.Set;
+
 import com.mongodb.DB;
 import com.mongodb.MongoClient;
 import com.mongodb.util.JSON;
@@ -24,7 +26,7 @@ public class RedisConnector implements Connector {
 			if(password != null & !password.isEmpty())
 				jedis.auth(password);
 			jedis.connect();
-			jedis.close();
+//			jedis.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
@@ -42,8 +44,8 @@ public class RedisConnector implements Connector {
 		if (jedis != null) {
 			String rkey = key;
 			String rvalue = value.toString();
-			jedis.set(rkey, rvalue);
-			// jedis.close();
+			jedis.rpush(rkey, rvalue);
+			 jedis.close();
 			return true;
 		}
 		return false;
@@ -63,7 +65,17 @@ public class RedisConnector implements Connector {
 	public boolean connect(String uri, String port, String user, String password, String DB) {
 		return this.connect(uri, port, password);
 	}
-
+	
+	public void readRedis() {
+//		connect("localhost", "6379", "");
+		
+		
+		if(jedis != null) {
+//		System.out.println(jedis.keys("*"));
+		System.out.println(jedis.rpop("dinotest_92952666_4_149876")+" removido com sucesso");
+		jedis.close();
+	}
+	}
 
 
 }

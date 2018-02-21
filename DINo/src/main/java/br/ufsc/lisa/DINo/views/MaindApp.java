@@ -61,6 +61,7 @@ public class MaindApp {
 	private JPasswordField textFieldPassword;
 	private JTextField textFieldImport;
 	private PostgresDB postgresDb;
+	private RedisConnector redisDb;
 	private Connector targetDb;
 	private JList listDb;
 	private String tempUrl;
@@ -622,6 +623,7 @@ public class MaindApp {
 				btnImport.setEnabled(false);
 				btnImport.setBounds(472, 395, 117, 25);
 				mainPanel.add(btnImport);
+				
 				btnImport.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						 try {
@@ -635,5 +637,14 @@ public class MaindApp {
 						 
 					}
 				});
+
+				JButton btnRedisData = new JButton("Redis data");
+				btnRedisData.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						
+					}
+				});
+				btnRedisData.setBounds(472, 357, 117, 25);
+				mainPanel.add(btnRedisData);
 	}
 }
