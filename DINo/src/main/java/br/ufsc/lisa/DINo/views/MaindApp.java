@@ -641,7 +641,8 @@ public class MaindApp {
 				JButton btnRedisData = new JButton("Redis data");
 				btnRedisData.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						
+						redisDb = new RedisConnector();
+						redisDb.readRedis();
 					}
 				});
 				btnRedisData.setBounds(472, 357, 117, 25);
